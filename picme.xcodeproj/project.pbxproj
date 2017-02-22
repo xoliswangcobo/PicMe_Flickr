@@ -14,9 +14,9 @@
 		854894FB1E5E01F700C310A9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 854894F91E5E01F700C310A9 /* Info.plist */; };
 		854894FC1E5E01F700C310A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 854894FA1E5E01F700C310A9 /* main.m */; };
 		854894FF1E5E02A500C310A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854894FE1E5E02A500C310A9 /* CoreLocation.framework */; };
-		854895031E5E042600C310A9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895021E5E042600C310A9 /* HomeViewController.m */; };
 		854895071E5E046000C310A9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895061E5E046000C310A9 /* BaseViewController.m */; };
 		8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548950B1E5E1DB000C310A9 /* LocationManager.m */; };
+		854895111E5E286E00C310A9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895101E5E286E00C310A9 /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,12 +29,12 @@
 		854894F91E5E01F700C310A9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Support Files/Info.plist"; sourceTree = "<group>"; };
 		854894FA1E5E01F700C310A9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Support Files/main.m"; sourceTree = "<group>"; };
 		854894FE1E5E02A500C310A9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		854895011E5E042600C310A9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = HomeViewController/HomeViewController.h; sourceTree = "<group>"; };
-		854895021E5E042600C310A9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = HomeViewController/HomeViewController.m; sourceTree = "<group>"; };
 		854895051E5E046000C310A9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ViewControllers/BaseViewController/BaseViewController.h; sourceTree = "<group>"; };
 		854895061E5E046000C310A9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ViewControllers/BaseViewController/BaseViewController.m; sourceTree = "<group>"; };
 		8548950A1E5E1DB000C310A9 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Models/Singletons/LocationManager.h; sourceTree = "<group>"; };
 		8548950B1E5E1DB000C310A9 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Models/Singletons/LocationManager.m; sourceTree = "<group>"; };
+		8548950F1E5E286E00C310A9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController/HomeViewController.h; sourceTree = "<group>"; };
+		854895101E5E286E00C310A9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController/HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +100,8 @@
 		854894EB1E5E016800C310A9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8548950E1E5E280900C310A9 /* DetailedPhotoViewController */,
+				8548950D1E5E27EB00C310A9 /* LocationPhotosViewController */,
 				854895041E5E042A00C310A9 /* HomeViewController */,
 				854895001E5E034B00C310A9 /* BaseViewController */,
 			);
@@ -143,8 +145,8 @@
 		854895041E5E042A00C310A9 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				854895011E5E042600C310A9 /* HomeViewController.h */,
-				854895021E5E042600C310A9 /* HomeViewController.m */,
+				8548950F1E5E286E00C310A9 /* HomeViewController.h */,
+				854895101E5E286E00C310A9 /* HomeViewController.m */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -164,6 +166,20 @@
 				8548950B1E5E1DB000C310A9 /* LocationManager.m */,
 			);
 			name = Singletons;
+			sourceTree = "<group>";
+		};
+		8548950D1E5E27EB00C310A9 /* LocationPhotosViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LocationPhotosViewController;
+			sourceTree = "<group>";
+		};
+		8548950E1E5E280900C310A9 /* DetailedPhotoViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DetailedPhotoViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +258,8 @@
 				854894E91E5E014B00C310A9 /* AppDelegate.m in Sources */,
 				8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */,
 				854895071E5E046000C310A9 /* BaseViewController.m in Sources */,
+				854895111E5E286E00C310A9 /* HomeViewController.m in Sources */,
 				854894FC1E5E01F700C310A9 /* main.m in Sources */,
-				854895031E5E042600C310A9 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,20 @@
 }
 
 - (IBAction)showGroup:(id)sender {
-    [self performSegueWithIdentifier:@"showGroup" sender:sender];
+    [self showLoadingProgressIndicatorWithMessage:@"Updating Location..."];
+    
+    [LocationManager currentLocationWithSuccess:^(NSInteger longitude, NSInteger latitude) {
+        [self dismissLoadingProgressIndicator];
+        [self performSegueWithIdentifier:@"showGroup" sender:sender];
+    } failure:^(NSError *error) {
+        [self dismissLoadingProgressIndicator];
+        
+        void (^okayActionBlock)() = ^ {
+        
+        };
+        
+        [self presentModalMessageWithTitle:@"Latest Location" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
+    }];
 }
 
 @end

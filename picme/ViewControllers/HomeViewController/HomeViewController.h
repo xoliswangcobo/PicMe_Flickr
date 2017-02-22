@@ -6,8 +6,9 @@
 //  Copyright © 2017 XoliswaNgcobo. All rights reserved.
 //
 
-#import "BaseViewController.h"
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "LocationManager.h"
 
 @interface HomeViewController : BaseViewController
 

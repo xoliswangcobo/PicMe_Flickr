@@ -12,16 +12,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"Started!!");
 }
 
 - (IBAction)showGroup:(id)sender {
     [self showLoadingProgressIndicatorWithMessage:@"Updating Location..."];
     
     [LocationManager currentLocationWithSuccess:^(NSInteger longitude, NSInteger latitude) {
-        [self dismissLoadingProgressIndicator];
-        [self performSegueWithIdentifier:@"showGroup" sender:sender];
+        
+        // Avoiding too fast glitchish animation - not needed
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dismissLoadingProgressIndicator];
+            [self performSegueWithIdentifier:@"showGroup" sender:sender];
+        });
+       
     } failure:^(NSError *error) {
         [self dismissLoadingProgressIndicator];
         

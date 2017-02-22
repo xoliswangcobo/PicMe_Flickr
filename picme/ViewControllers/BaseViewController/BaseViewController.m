@@ -164,4 +164,22 @@ static UIView * loadingIndicatorView;
     self.view.userInteractionEnabled = YES;
 }
 
+
+#pragma mark - Alert Controller (Messages)
+
+- (void) presentModalMessageWithTitle:(NSString*)title message:(NSString*)message buttonTitles:(NSArray*)buttonTitles buttonActions:(NSArray*)buttonActions {
+    UIAlertController * alertView = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    for (int buttonIndex = 0; buttonIndex < buttonTitles.count; buttonIndex++) {
+        void (^buttonActionBlock) () = buttonActions[buttonIndex];
+        UIAlertAction * buttonAction = [UIAlertAction actionWithTitle:buttonTitles[buttonIndex] style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            buttonActionBlock();
+        }];
+        
+        [alertView addAction:buttonAction];
+    }
+    
+    [self presentViewController:alertView animated:YES completion:nil];
+}
+
 @end

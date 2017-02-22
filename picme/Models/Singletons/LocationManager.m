@@ -11,7 +11,8 @@
 static LocationManager * sharedManager_;
 
 @interface LocationManager()
-    @property (nonatomic, copy) void (^locationUpdateCompletionBlock) (NSInteger longitude, NSInteger latitude);
+    @property (nonatomic, copy) void (^locationUpdateSuccessBlock) (NSInteger longitude, NSInteger latitude);
+    @property (nonatomic, copy) void (^locationUpdateFailureBlock) (NSError * error);
     @property (strong, nonatomic) CLLocationManager * locationManager;
 @end
 
@@ -23,7 +24,8 @@ static LocationManager * sharedManager_;
     self = [super init];
     
     if (self) {
-        self.locationUpdateCompletionBlock = nil;
+        self.locationUpdateSuccessBlock = nil;
+        self.locationUpdateFailureBlock = nil;
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
     }
@@ -44,9 +46,13 @@ static LocationManager * sharedManager_;
     sharedManager_ = nil;
 }
 
-+ (void) currentLocationWithCompletion:(void (^) (NSInteger longitude, NSInteger latitude)) completion {
-    if (completion) {
-        [LocationManager sharedManager].locationUpdateCompletionBlock = completion;
++ (void) currentLocationWithSuccess:(void (^) (NSInteger longitude, NSInteger latitude)) success failure:(void (^) (NSError * error)) failure {
+    if (success) {
+        [LocationManager sharedManager].locationUpdateSuccessBlock = success;
+    }
+    
+    if (failure) {
+        [LocationManager sharedManager].locationUpdateFailureBlock = failure;
     }
     
     [LocationManager sharedManager].locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -63,10 +69,23 @@ static LocationManager * sharedManager_;
     [[[LocationManager sharedManager] locationManager] stopUpdatingLocation];
     CLLocation * theLocation = [locations firstObject];
     
-    if ([LocationManager sharedManager].locationUpdateCompletionBlock) {
-        [LocationManager sharedManager].locationUpdateCompletionBlock(theLocation.coordinate.latitude, theLocation.coordinate.longitude);
-        [LocationManager sharedManager].locationUpdateCompletionBlock = nil;
+    if ([LocationManager sharedManager].locationUpdateSuccessBlock) {
+        [LocationManager sharedManager].locationUpdateSuccessBlock(theLocation.coordinate.latitude, theLocation.coordinate.longitude);
     }
+    
+    [LocationManager sharedManager].locationUpdateSuccessBlock = nil;
+    [LocationManager sharedManager].locationUpdateFailureBlock = nil;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    [[[LocationManager sharedManager] locationManager] stopUpdatingLocation];
+    
+    if ([LocationManager sharedManager].locationUpdateFailureBlock) {
+        [LocationManager sharedManager].locationUpdateFailureBlock(error);
+    }
+    
+    [LocationManager sharedManager].locationUpdateSuccessBlock = nil;
+    [LocationManager sharedManager].locationUpdateFailureBlock = nil;
 }
 
 @end

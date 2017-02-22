@@ -14,6 +14,6 @@
 + (LocationManager*) sharedManager;
 + (void) resetManager;
 
-+ (void) currentLocationWithCompletion:(void (^) (NSInteger longitude, NSInteger latitude)) completion;
++ (void) currentLocationWithSuccess:(void (^) (NSInteger longitude, NSInteger latitude)) completion failure:(void (^) (NSError * error)) failure;
 
 @end

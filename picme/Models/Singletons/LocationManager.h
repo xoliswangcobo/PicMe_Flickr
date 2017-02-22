@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface LocationManager : NSObject
+@interface LocationManager : NSObject <CLLocationManagerDelegate>
+
++ (LocationManager*) sharedManager;
++ (void) resetManager;
+
++ (void) currentLocationWithCompletion:(void (^) (NSInteger longitude, NSInteger latitude)) completion;
 
 @end

@@ -10,4 +10,10 @@
 
 @implementation HomeViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSLog(@"Started!!");
+}
+
 @end

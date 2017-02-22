@@ -42,11 +42,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PicMe" id="bNG-32-QoN"/>
+                    <connections>
+                        <segue destination="4eX-GE-J1K" kind="show" identifier="showGroup" id="vUj-Lp-2HL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="e8W-lD-8ws">
                     <connections>
-                        <segue destination="4eX-GE-J1K" kind="show" identifier="showGroup" id="mli-qW-4mz"/>
+                        <action selector="showGroup:" destination="BYZ-38-t0r" id="CD7-0v-vF5"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -61,7 +64,7 @@
                         <viewControllerLayoutGuide type="bottom" id="shg-dp-D6Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hAh-w0-l4N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

@@ -16,4 +16,8 @@
     NSLog(@"Started!!");
 }
 
+- (IBAction)showGroup:(id)sender {
+    [self performSegueWithIdentifier:@"showGroup" sender:sender];
+}
+
 @end

@@ -17,6 +17,8 @@
 		854895071E5E046000C310A9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895061E5E046000C310A9 /* BaseViewController.m */; };
 		8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548950B1E5E1DB000C310A9 /* LocationManager.m */; };
 		854895111E5E286E00C310A9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895101E5E286E00C310A9 /* HomeViewController.m */; };
+		854895141E5E291D00C310A9 /* DetailedPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895131E5E291D00C310A9 /* DetailedPhotoViewController.m */; };
+		854895171E5E293B00C310A9 /* LocationPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895161E5E293B00C310A9 /* LocationPhotosViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		8548950B1E5E1DB000C310A9 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Models/Singletons/LocationManager.m; sourceTree = "<group>"; };
 		8548950F1E5E286E00C310A9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController/HomeViewController.h; sourceTree = "<group>"; };
 		854895101E5E286E00C310A9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController/HomeViewController.m; sourceTree = "<group>"; };
+		854895121E5E291D00C310A9 /* DetailedPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedPhotoViewController.h; path = ViewControllers/DetailedPhotoViewController/DetailedPhotoViewController.h; sourceTree = "<group>"; };
+		854895131E5E291D00C310A9 /* DetailedPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedPhotoViewController.m; path = ViewControllers/DetailedPhotoViewController/DetailedPhotoViewController.m; sourceTree = "<group>"; };
+		854895151E5E293B00C310A9 /* LocationPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationPhotosViewController.h; path = ViewControllers/LocationPhotosViewController/LocationPhotosViewController.h; sourceTree = "<group>"; };
+		854895161E5E293B00C310A9 /* LocationPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPhotosViewController.m; path = ViewControllers/LocationPhotosViewController/LocationPhotosViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,8 @@
 		8548950D1E5E27EB00C310A9 /* LocationPhotosViewController */ = {
 			isa = PBXGroup;
 			children = (
+				854895151E5E293B00C310A9 /* LocationPhotosViewController.h */,
+				854895161E5E293B00C310A9 /* LocationPhotosViewController.m */,
 			);
 			name = LocationPhotosViewController;
 			sourceTree = "<group>";
@@ -178,6 +186,8 @@
 		8548950E1E5E280900C310A9 /* DetailedPhotoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				854895121E5E291D00C310A9 /* DetailedPhotoViewController.h */,
+				854895131E5E291D00C310A9 /* DetailedPhotoViewController.m */,
 			);
 			name = DetailedPhotoViewController;
 			sourceTree = "<group>";
@@ -256,10 +266,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				854894E91E5E014B00C310A9 /* AppDelegate.m in Sources */,
+				854895171E5E293B00C310A9 /* LocationPhotosViewController.m in Sources */,
 				8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */,
 				854895071E5E046000C310A9 /* BaseViewController.m in Sources */,
 				854895111E5E286E00C310A9 /* HomeViewController.m in Sources */,
 				854894FC1E5E01F700C310A9 /* main.m in Sources */,
+				854895141E5E291D00C310A9 /* DetailedPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

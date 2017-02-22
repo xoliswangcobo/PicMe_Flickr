@@ -12,6 +12,8 @@
     @property (strong, nonatomic) UIScrollView * contentScrollView;
 @end
 
+static UIView * loadingIndicatorView;
+
 @implementation BaseViewController
 
 - (void)viewDidLoad {
@@ -107,6 +109,59 @@
 
 - (void) endEditingOnView {
     [self.view.window endEditing:YES];
+}
+
+
+#pragma mark - ProgressIndicator
+
+- (void) showLoadingProgressIndicatorWithMessage:(NSString *)loadingMessage {
+    self.view.userInteractionEnabled = NO;
+    self.view.alpha = 0.8f;
+    
+    UIActivityIndicatorView * progressIndicator;
+    UILabel * loadingIndicatorViewMessage;
+    
+    if (loadingIndicatorView != nil) {
+        [loadingIndicatorView removeFromSuperview];
+        loadingIndicatorView = nil;
+    }
+    
+    loadingIndicatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*0.6, self.view.frame.size.height*0.2)];
+    loadingIndicatorView.backgroundColor = [UIColor lightGrayColor];
+    loadingIndicatorView.layer.cornerRadius = 5.0f;
+    loadingIndicatorView.center = CGPointMake(self.view.center.x, self.view.center.y - self.navigationController.navigationBar.frame.size.height);
+    
+    progressIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    progressIndicator.center = CGPointMake(loadingIndicatorView.frame.size.width / 2, loadingIndicatorView.frame.size.height / 2);
+    progressIndicator.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    [progressIndicator setColor:[UIColor whiteColor]];
+    [progressIndicator startAnimating];
+    
+    loadingIndicatorViewMessage = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, loadingIndicatorView.frame.size.width, loadingIndicatorView.frame.size.height*0.3)];
+    [loadingIndicatorViewMessage setText:loadingMessage];
+    [loadingIndicatorViewMessage setTextColor:[UIColor whiteColor]];
+    [loadingIndicatorViewMessage setTextAlignment:NSTextAlignmentCenter];
+    loadingIndicatorViewMessage.center = CGPointMake(progressIndicator.center.x, progressIndicator.center.y+20+progressIndicator.frame.size.height/2);
+    
+    [loadingIndicatorView addSubview:loadingIndicatorViewMessage];
+    [loadingIndicatorView addSubview:progressIndicator];
+    [self.view addSubview:loadingIndicatorView];
+}
+
+- (void) dismissLoadingProgressIndicator {
+    [self enabledUserInteraction];
+    self.view.alpha = 1.0f;
+    
+    if (loadingIndicatorView != nil) {
+        [loadingIndicatorView removeFromSuperview];
+        loadingIndicatorView = nil;
+        
+        [self performSelector:@selector(enabledUserInteraction) withObject:nil afterDelay:0.5];
+    }
+}
+
+- (void) enabledUserInteraction {
+    self.view.userInteractionEnabled = YES;
 }
 
 @end

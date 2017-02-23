@@ -17,9 +17,9 @@
 - (IBAction)showGroup:(id)sender {
     [self showLoadingProgressIndicatorWithMessage:@"Updating Location..."];
     
-    [LocationManager currentLocationWithSuccess:^(NSInteger latitude, NSInteger longitude) {
+    [LocationManager currentLocationWithSuccess:^(float latitude, float longitude) {
         [self dismissLoadingProgressIndicator];
-         [self showLoadingProgressIndicatorWithMessage:@"Getting Photos..."];
+        [self showLoadingProgressIndicatorWithMessage:@"Getting Photos..."];
         
         [FlickrAPIManager photosForLocationWithLatitude:latitude longitude:longitude resultLimit:30 success:^(NSDictionary *responseDictionary) {
             [self dismissLoadingProgressIndicator];

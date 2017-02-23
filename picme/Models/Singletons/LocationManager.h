@@ -16,5 +16,5 @@
 
 + (void) currentLocationWithSuccess:(void (^) (float latitude, float longitude)) completion failure:(void (^) (NSError * error)) failure;
 + (void) placesNearbyLatitude:(float) latitude longitude:(float) longitude success:(void (^) (NSDictionary * responseDictionary)) success failure:(void (^) (NSError * error)) failure;
-
++ (void) placeIconWithURL:(NSString*) iconURL success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure;
 @end

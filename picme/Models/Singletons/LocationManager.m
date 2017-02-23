@@ -8,6 +8,7 @@
 
 #import "LocationManager.h"
 #import "AFNetworking.h"
+#import "Utilities.h"
 
 #define PLACES_API_KEY @"AIzaSyBYPoge1PLoobQFhVDfL4k5HulfXBrOnMM"
 #define PLACES_API_NEARBYSEARCH_URL @"https://maps.googleapis.com/maps/api/place/nearbysearch/json"
@@ -105,6 +106,14 @@ static LocationManager * sharedManager_;
             failure(error);
         }
     }];
+}
+
++ (void) placeIconWithURL:(NSString*) iconURL success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
+    [Utilities downloadDataWithURL:iconURL success:^(id responseData) {
+        if (success) {
+            success(responseData);
+        }
+    } failure:failure];
 }
 
 @end

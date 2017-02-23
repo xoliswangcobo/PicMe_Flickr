@@ -12,5 +12,6 @@
 
 + (FlickrAPIManager*) sharedManager;
 + (void) resetManager;
++ (void) photosForLocationWithLatitude:(NSInteger) latitude  longitude:(NSInteger) longitude resultLimit:(NSInteger) limit failure:(void (^) (NSError * error)) failure success:(void (^) (NSDictionary * responseDictionary)) success;
 
 @end

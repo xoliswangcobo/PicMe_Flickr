@@ -80,7 +80,7 @@ static FlickrAPIManager * sharedManager_;
     [FlickrAPIManager sharedManager].apiSuccessBlock = success;
     [FlickrAPIManager sharedManager].apiFailureBlock = failure;
     
-    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.geo.photosForLocation" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"page", [@(limit) stringValue], @"per_page", nil]];
+    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.search" arguments:[NSDictionary dictionaryWithObjectsAndKeys:[@(latitude) stringValue], @"lat", [@(longitude) stringValue], @"lon", @"1", @"page", [@(limit) stringValue], @"per_page", @"1", @"nojsoncallback", @"2", @"radius", nil]];
 }
 
 @end

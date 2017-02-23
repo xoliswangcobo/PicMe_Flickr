@@ -8,30 +8,44 @@
 
 #import "LocationPhotosViewController.h"
 
-@interface LocationPhotosViewController ()
-
+@interface LocationPhotosViewController () <UITableViewDelegate, UITableViewDataSource>
+    @property (weak, nonatomic) IBOutlet UITableView * locationPhotosTableView;
 @end
 
 @implementation LocationPhotosViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark - TableView Delegate and DataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
-/*
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.locationPhotos count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * thePhotoCell;
+    thePhotoCell = [tableView dequeueReusableCellWithIdentifier:@"locationPhotoCell"];
+    
+    if (thePhotoCell) {
+        NSDictionary * thePhotoData = [self.locationPhotos objectAtIndex:indexPath.row];
+        thePhotoCell.textLabel.text = [thePhotoData valueForKey:@"title"];
+    }
+    
+    return thePhotoCell;
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
 }
-*/
+
 
 @end

@@ -7,11 +7,14 @@
 //
 
 #import "HomeViewController.h"
+#import "LocationPhotosViewController.h"
 
 @interface HomeViewController() <UITableViewDataSource, UITableViewDelegate>
     @property (strong, nonatomic) NSArray * nearByPlaces;
     @property (weak, nonatomic) IBOutlet UITableView * nearByPlacesTableView;
     @property (nonatomic, strong) UIRefreshControl * pullTableViewToRefreshControl;
+
+    @property (strong, nonatomic) NSArray * selectedLocationPhotoData;
 @end
 
 @implementation HomeViewController
@@ -77,6 +80,23 @@
     return theCell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary * selectedData = [self.nearByPlaces objectAtIndex:indexPath.row];
+    NSDictionary * locationData = [[selectedData objectForKey:@"geometry"] objectForKey:@"location"];
+    
+    [self showLoadingProgressIndicatorWithMessage:@"Getting Photos..."];
+    
+    [FlickrAPIManager photosForLocationWithLatitude:[[locationData valueForKey:@"lat"] floatValue] longitude:[[locationData valueForKey:@"lng"] floatValue] resultLimit:30 success:^(NSDictionary *responseDictionary) {
+        [self dismissLoadingProgressIndicator];
+        self.selectedLocationPhotoData = [[responseDictionary objectForKey:@"photos"] objectForKey:@"photo"];
+        [self performSegueWithIdentifier:@"showGroup" sender:[tableView indexPathForSelectedRow]];
+    } failure:^(NSError *error) {
+        [self dismissLoadingProgressIndicator];
+        void (^okayActionBlock)() = ^ {};
+        [self presentModalMessageWithTitle:@"Get Photos" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
+    }];
+}
+
 #pragma mark - Other Methods
 
 - (IBAction)showGroup:(id)sender {
@@ -107,6 +127,16 @@
         
         [self presentModalMessageWithTitle:@"Latest Location" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
     }];
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showGroup"]) {
+        LocationPhotosViewController * locationPhotosViewController = segue.destinationViewController;
+        locationPhotosViewController.locationPhotos = self.selectedLocationPhotoData;
+    }
 }
 
 @end

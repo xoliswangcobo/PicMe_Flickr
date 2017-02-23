@@ -10,4 +10,6 @@
 
 @interface LocationPhotosViewController : BaseViewController
 
+    @property (strong, nonatomic) NSArray * locationPhotos;
+
 @end

@@ -9,6 +9,7 @@
 #import "FlickrAPIManager.h"
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 #import "AFNetworking.h"
+#import "Utilities.h"
 
 #define API_KEY @"450b251beda219be0de47e38e5511ea0"
 #define APP_SECRET @"d55986dfa5325bbc"
@@ -81,7 +82,60 @@ static FlickrAPIManager * sharedManager_;
     [FlickrAPIManager sharedManager].apiSuccessBlock = success;
     [FlickrAPIManager sharedManager].apiFailureBlock = failure;
     
-    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.search" arguments:[NSDictionary dictionaryWithObjectsAndKeys:[@(latitude) stringValue], @"lat", [@(longitude) stringValue], @"lon", @"1", @"page", [@(limit) stringValue], @"per_page", @"1", @"nojsoncallback", @"2", @"radius", nil]];
+    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.search" arguments:[NSDictionary dictionaryWithObjectsAndKeys:[@(latitude) stringValue], @"lat", [@(longitude) stringValue], @"lon", @"1", @"page", [@(limit) stringValue], @"per_page", @"1", @"nojsoncallback", @"2", @"radius", @"json", @"format", nil]];
+}
+
++ (void) photosWithID:(NSString*) photoID quality:(FlickrAPIManagerPhotoQuality) quality success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
+    [FlickrAPIManager sharedManager].apiSuccessBlock = ^(NSDictionary *responseDictionary) {
+        NSString * qualityAsString;
+        
+        switch (quality) {
+            case FlickrAPIManagerPhotoQualityThumbnail:
+                qualityAsString = @"Thumbnail";
+                break;
+            case FlickrAPIManagerPhotoQualitySmall:
+                qualityAsString = @"Small 320";
+                break;
+            case FlickrAPIManagerPhotoQualityMedium:
+                qualityAsString = @"Medium 640";
+                break;
+            case FlickrAPIManagerPhotoQualityLarge:
+                qualityAsString = @"Large";
+                break;
+            case FlickrAPIManagerPhotoQualityOriginal:
+                qualityAsString = @"Original";
+                break;
+            default:
+                break;
+        }
+        
+        NSString * photoURLString;
+        
+        for (NSDictionary * photoSize in [[responseDictionary objectForKey:@"sizes"] objectForKey:@"size"]) {
+            if ([[photoSize valueForKey:@"label"] isEqualToString:qualityAsString]) {
+                photoURLString = [photoSize valueForKey:@"source"];
+                break;
+            }
+        }
+        
+        [Utilities downloadDataWithURL:photoURLString success:^(id responseData) {
+            if (success) {
+                success(responseData);
+            }
+        } failure:^(NSError *error) {
+            if (failure) {
+                failure(error);
+            }
+        }];
+    };
+    
+    [FlickrAPIManager sharedManager].apiFailureBlock = ^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    };
+    
+    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.getSizes" arguments:@{ @"nojsoncallback" : @"1", @"photo_id" : photoID, @"format" : @"json" }];
 }
 
 @end

@@ -8,10 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, FlickrAPIManagerPhotoQuality) {
+    FlickrAPIManagerPhotoQualityThumbnail = 0,
+    FlickrAPIManagerPhotoQualitySmall,
+    FlickrAPIManagerPhotoQualityMedium,
+    FlickrAPIManagerPhotoQualityLarge,
+    FlickrAPIManagerPhotoQualityOriginal
+};
+
 @interface FlickrAPIManager : NSObject
 
 + (FlickrAPIManager*) sharedManager;
 + (void) resetManager;
 + (void) photosForLocationWithLatitude:(float) latitude  longitude:(float) longitude resultLimit:(NSInteger) limit success:(void (^) (NSDictionary * responseDictionary)) success failure:(void (^) (NSError * error)) failure;
++ (void) photosWithID:(NSString*) photoID quality:(FlickrAPIManagerPhotoQuality) quality success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure;
 
 @end

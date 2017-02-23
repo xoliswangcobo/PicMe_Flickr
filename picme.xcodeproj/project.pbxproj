@@ -20,6 +20,7 @@
 		854895111E5E286E00C310A9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895101E5E286E00C310A9 /* HomeViewController.m */; };
 		854895141E5E291D00C310A9 /* DetailedPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895131E5E291D00C310A9 /* DetailedPhotoViewController.m */; };
 		854895171E5E293B00C310A9 /* LocationPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895161E5E293B00C310A9 /* LocationPhotosViewController.m */; };
+		857D4ECA1E5EF9C400D9F6B1 /* FlickrAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4EC91E5EF9C400D9F6B1 /* FlickrAPIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		854895131E5E291D00C310A9 /* DetailedPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedPhotoViewController.m; path = ViewControllers/DetailedPhotoViewController/DetailedPhotoViewController.m; sourceTree = "<group>"; };
 		854895151E5E293B00C310A9 /* LocationPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationPhotosViewController.h; path = ViewControllers/LocationPhotosViewController/LocationPhotosViewController.h; sourceTree = "<group>"; };
 		854895161E5E293B00C310A9 /* LocationPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPhotosViewController.m; path = ViewControllers/LocationPhotosViewController/LocationPhotosViewController.m; sourceTree = "<group>"; };
+		857D4EC81E5EF9C400D9F6B1 /* FlickrAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrAPIManager.h; path = Models/Singletons/FlickrAPIManager.h; sourceTree = "<group>"; };
+		857D4EC91E5EF9C400D9F6B1 /* FlickrAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrAPIManager.m; path = Models/Singletons/FlickrAPIManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 			children = (
 				8548950A1E5E1DB000C310A9 /* LocationManager.h */,
 				8548950B1E5E1DB000C310A9 /* LocationManager.m */,
+				857D4EC81E5EF9C400D9F6B1 /* FlickrAPIManager.h */,
+				857D4EC91E5EF9C400D9F6B1 /* FlickrAPIManager.m */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */,
 				854895071E5E046000C310A9 /* BaseViewController.m in Sources */,
 				854895111E5E286E00C310A9 /* HomeViewController.m in Sources */,
+				857D4ECA1E5EF9C400D9F6B1 /* FlickrAPIManager.m in Sources */,
 				854894FC1E5E01F700C310A9 /* main.m in Sources */,
 				854895141E5E291D00C310A9 /* DetailedPhotoViewController.m in Sources */,
 			);
@@ -482,6 +488,7 @@
 				854894E61E5DFC1800C310A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

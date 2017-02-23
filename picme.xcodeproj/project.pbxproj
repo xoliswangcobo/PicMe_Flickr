@@ -20,6 +20,7 @@
 		854895141E5E291D00C310A9 /* DetailedPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895131E5E291D00C310A9 /* DetailedPhotoViewController.m */; };
 		854895171E5E293B00C310A9 /* LocationPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895161E5E293B00C310A9 /* LocationPhotosViewController.m */; };
 		857D4ECA1E5EF9C400D9F6B1 /* FlickrAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4EC91E5EF9C400D9F6B1 /* FlickrAPIManager.m */; };
+		857D4ED11E5F776F00D9F6B1 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED01E5F776F00D9F6B1 /* Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		854895161E5E293B00C310A9 /* LocationPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPhotosViewController.m; path = ViewControllers/LocationPhotosViewController/LocationPhotosViewController.m; sourceTree = "<group>"; };
 		857D4EC81E5EF9C400D9F6B1 /* FlickrAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrAPIManager.h; path = Models/Singletons/FlickrAPIManager.h; sourceTree = "<group>"; };
 		857D4EC91E5EF9C400D9F6B1 /* FlickrAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrAPIManager.m; path = Models/Singletons/FlickrAPIManager.m; sourceTree = "<group>"; };
+		857D4ECF1E5F776F00D9F6B1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Models/Utilities.h; sourceTree = "<group>"; };
+		857D4ED01E5F776F00D9F6B1 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = Models/Utilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				854895091E5E1D2F00C310A9 /* Singletons */,
+				857D4ECF1E5F776F00D9F6B1 /* Utilities.h */,
+				857D4ED01E5F776F00D9F6B1 /* Utilities.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				854894E91E5E014B00C310A9 /* AppDelegate.m in Sources */,
 				854895171E5E293B00C310A9 /* LocationPhotosViewController.m in Sources */,
 				8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */,
+				857D4ED11E5F776F00D9F6B1 /* Utilities.m in Sources */,
 				854895071E5E046000C310A9 /* BaseViewController.m in Sources */,
 				854895111E5E286E00C310A9 /* HomeViewController.m in Sources */,
 				857D4ECA1E5EF9C400D9F6B1 /* FlickrAPIManager.m in Sources */,

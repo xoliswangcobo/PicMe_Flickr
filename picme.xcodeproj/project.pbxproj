@@ -12,7 +12,6 @@
 		854894F41E5E01BB00C310A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854894F21E5E01BB00C310A9 /* LaunchScreen.storyboard */; };
 		854894F51E5E01BB00C310A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854894F31E5E01BB00C310A9 /* Main.storyboard */; };
 		854894F81E5E01D900C310A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854894F71E5E01D900C310A9 /* Assets.xcassets */; };
-		854894FB1E5E01F700C310A9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 854894F91E5E01F700C310A9 /* Info.plist */; };
 		854894FC1E5E01F700C310A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 854894FA1E5E01F700C310A9 /* main.m */; };
 		854894FF1E5E02A500C310A9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854894FE1E5E02A500C310A9 /* CoreLocation.framework */; };
 		854895071E5E046000C310A9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854895061E5E046000C310A9 /* BaseViewController.m */; };
@@ -275,7 +274,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				854894FB1E5E01F700C310A9 /* Info.plist in Resources */,
 				854894F51E5E01BB00C310A9 /* Main.storyboard in Resources */,
 				854894F41E5E01BB00C310A9 /* LaunchScreen.storyboard in Resources */,
 				854894F81E5E01D900C310A9 /* Assets.xcassets in Resources */,

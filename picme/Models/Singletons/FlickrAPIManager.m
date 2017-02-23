@@ -76,7 +76,7 @@ static FlickrAPIManager * sharedManager_;
 
 #pragma mark - OFFlickrAPIMethods
 
-+ (void) photosForLocationWithLatitude:(NSInteger) latitude  longitude:(NSInteger) longitude resultLimit:(NSInteger) limit failure:(void (^) (NSError * error)) failure success:(void (^) (NSDictionary * responseDictionary)) success {
++ (void) photosForLocationWithLatitude:(NSInteger) latitude  longitude:(NSInteger) longitude resultLimit:(NSInteger) limit success:(void (^) (NSDictionary * responseDictionary)) success failure:(void (^) (NSError * error)) failure {
     [FlickrAPIManager sharedManager].apiSuccessBlock = success;
     [FlickrAPIManager sharedManager].apiFailureBlock = failure;
     

@@ -135,7 +135,7 @@ static FlickrAPIManager * sharedManager_;
         }
     };
     
-    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.getSizes" arguments:@{ @"nojsoncallback" : @"1", @"photo_id" : photoID, @"format" : @"json" }];
+    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.getSizes" arguments:@{ @"nojsoncallback" : @"1", @"photo_id" : photoID }];
 }
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
 
 @interface Utilities : NSObject
+
++ (void) downloadDataWithURL:(NSString*) dataURLString success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure;
 
 @end

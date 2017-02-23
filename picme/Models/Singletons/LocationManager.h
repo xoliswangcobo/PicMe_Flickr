@@ -15,5 +15,6 @@
 + (void) resetManager;
 
 + (void) currentLocationWithSuccess:(void (^) (float latitude, float longitude)) completion failure:(void (^) (NSError * error)) failure;
++ (void) placesNearbyLatitude:(float) latitude longitude:(float) longitude success:(void (^) (NSDictionary * responseDictionary)) success failure:(void (^) (NSError * error)) failure;
 
 @end

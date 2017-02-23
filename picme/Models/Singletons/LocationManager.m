@@ -7,6 +7,10 @@
 //
 
 #import "LocationManager.h"
+#import "AFNetworking.h"
+
+#define PLACES_API_KEY @"AIzaSyBYPoge1PLoobQFhVDfL4k5HulfXBrOnMM"
+#define PLACES_API_NEARBYSEARCH_URL @"https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 
 static LocationManager * sharedManager_;
 
@@ -86,6 +90,21 @@ static LocationManager * sharedManager_;
     
     [LocationManager sharedManager].locationUpdateSuccessBlock = nil;
     [LocationManager sharedManager].locationUpdateFailureBlock = nil;
+}
+
+#pragma mark - Place API Data
+
++ (void) placesNearbyLatitude:(float) latitude longitude:(float) longitude success:(void (^) (NSDictionary * responseDictionary)) success failure:(void (^) (NSError * error)) failure {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:PLACES_API_NEARBYSEARCH_URL parameters:@{ @"key" : PLACES_API_KEY, @"location" : [NSString stringWithFormat:@"%f,%f", latitude, longitude], @"type" : @"shopping_mall", @"radius" : @"5000" } progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        if(failure) {
+            failure(error);
+        }
+    }];
 }
 
 @end

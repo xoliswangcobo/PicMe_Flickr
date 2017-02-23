@@ -12,8 +12,6 @@
 
 #define API_KEY @"450b251beda219be0de47e38e5511ea0"
 #define APP_SECRET @"d55986dfa5325bbc"
-#define PLACES_API_KEY @"AIzaSyBYPoge1PLoobQFhVDfL4k5HulfXBrOnMM"
-#define PLACES_API_NEARBYSEARCH_URL @"https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 
 #pragma mark - FlickrAPIManager
 
@@ -84,45 +82,6 @@ static FlickrAPIManager * sharedManager_;
     [FlickrAPIManager sharedManager].apiFailureBlock = failure;
     
     [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.search" arguments:[NSDictionary dictionaryWithObjectsAndKeys:[@(latitude) stringValue], @"lat", [@(longitude) stringValue], @"lon", @"1", @"page", [@(limit) stringValue], @"per_page", @"1", @"nojsoncallback", @"2", @"radius", nil]];
-}
-
-
-#pragma mark - AFNetworking/Google Utilities
-
-+ (void) downloadDataWithURL:(NSString*) dataURLString success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    NSURL *URL = [NSURL URLWithString:dataURLString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            if(failure) {
-                failure(error);
-            }
-        } else {
-            NSLog(@"%@ %@", response, responseObject);
-            if (success) {
-                success(responseObject);
-            }
-        }
-    }];
-    
-    [dataTask resume];
-}
-
-- (void) placesNearbyLatitude:(float) latitude longitude:(float) longitude success:(void (^) (NSDictionary * responseDictionary)) success failure:(void (^) (NSError * error)) failure {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:PLACES_API_NEARBYSEARCH_URL parameters:@{ @"key" : PLACES_API_KEY, @"location" : [NSString stringWithFormat:@"%f,%f", latitude, longitude], @"type" : @"shopping_mall", @"radius" : @"5000" } progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        if(failure) {
-            failure(error);
-        }
-    }];
 }
 
 @end

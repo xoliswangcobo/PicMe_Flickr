@@ -13,26 +13,43 @@
 #pragma mark - Utilities
 
 + (void) downloadDataWithURL:(NSString*) dataURLString success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
     NSURL *URL = [NSURL URLWithString:dataURLString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            if(failure) {
-                failure(error);
-            }
-        } else {
-            NSLog(@"%@ %@", response, responseObject);
-            if (success) {
-                success(responseObject);
-            }
-        }
-    }];
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//        if (error) {
+//            if(failure) {
+//                failure(error);
+//            }
+//        } else {
+//            NSLog(@"%@ %@", response, responseObject);
+//            if (success) {
+//                success(responseObject);
+//            }
+//        }
+//    }];
+//    
+//    [dataTask resume];
     
-    [dataTask resume];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    [NSURLConnection
+     sendAsynchronousRequest:request
+                       queue:[NSOperationQueue mainQueue]
+           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+               if (!error) {
+                   if (success) {
+                       success(data);
+                   }
+               } else{
+                   if(failure) {
+                       failure(error);
+                   }
+               }
+           }];
 }
 
 @end

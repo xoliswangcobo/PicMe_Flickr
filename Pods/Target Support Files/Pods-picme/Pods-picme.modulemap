@@ -1,0 +1,6 @@
+framework module Pods_picme {
+  umbrella header "Pods-picme-umbrella.h"
+
+  export *
+  module * { export * }
+}

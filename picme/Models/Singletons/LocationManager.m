@@ -11,7 +11,7 @@
 static LocationManager * sharedManager_;
 
 @interface LocationManager()
-    @property (nonatomic, copy) void (^locationUpdateSuccessBlock) (double latitude, double longitude);
+    @property (nonatomic, copy) void (^locationUpdateSuccessBlock) (float latitude, float longitude);
     @property (nonatomic, copy) void (^locationUpdateFailureBlock) (NSError * error);
     @property (strong, nonatomic) CLLocationManager * locationManager;
 @end
@@ -46,7 +46,7 @@ static LocationManager * sharedManager_;
     sharedManager_ = nil;
 }
 
-+ (void) currentLocationWithSuccess:(void (^) (double latitude, double longitude)) success failure:(void (^) (NSError * error)) failure {
++ (void) currentLocationWithSuccess:(void (^) (float latitude, float longitude)) success failure:(void (^) (NSError * error)) failure {
     if (success) {
         [LocationManager sharedManager].locationUpdateSuccessBlock = success;
     }

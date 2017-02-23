@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "LocationManager.h"
+#import "FlickrAPIManager.h"
 
 @interface HomeViewController : BaseViewController
 

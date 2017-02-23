@@ -17,14 +17,22 @@
 - (IBAction)showGroup:(id)sender {
     [self showLoadingProgressIndicatorWithMessage:@"Updating Location..."];
     
-    [LocationManager currentLocationWithSuccess:^(NSInteger longitude, NSInteger latitude) {
+    [LocationManager currentLocationWithSuccess:^(NSInteger latitude, NSInteger longitude) {
+        [self dismissLoadingProgressIndicator];
+         [self showLoadingProgressIndicatorWithMessage:@"Getting Photos..."];
         
-        // Avoiding too fast glitchish animation - not needed
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [FlickrAPIManager photosForLocationWithLatitude:latitude longitude:longitude resultLimit:30 success:^(NSDictionary *responseDictionary) {
             [self dismissLoadingProgressIndicator];
             [self performSegueWithIdentifier:@"showGroup" sender:sender];
-        });
-       
+        } failure:^(NSError *error) {
+            [self dismissLoadingProgressIndicator];
+            
+            void (^okayActionBlock)() = ^ {
+                
+            };
+            
+            [self presentModalMessageWithTitle:@"Get Photos" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
+        }];
     } failure:^(NSError *error) {
         [self dismissLoadingProgressIndicator];
         

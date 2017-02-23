@@ -97,39 +97,6 @@
     }];
 }
 
-#pragma mark - Other Methods
-
-- (IBAction)showGroup:(id)sender {
-    [self showLoadingProgressIndicatorWithMessage:@"Updating Location..."];
-    
-    [LocationManager currentLocationWithSuccess:^(float latitude, float longitude) {
-        [self dismissLoadingProgressIndicator];
-        [self showLoadingProgressIndicatorWithMessage:@"Getting Photos..."];
-        
-        [FlickrAPIManager photosForLocationWithLatitude:latitude longitude:longitude resultLimit:30 success:^(NSDictionary *responseDictionary) {
-            [self dismissLoadingProgressIndicator];
-            [self performSegueWithIdentifier:@"showGroup" sender:sender];
-        } failure:^(NSError *error) {
-            [self dismissLoadingProgressIndicator];
-            
-            void (^okayActionBlock)() = ^ {
-                
-            };
-            
-            [self presentModalMessageWithTitle:@"Get Photos" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
-        }];
-    } failure:^(NSError *error) {
-        [self dismissLoadingProgressIndicator];
-        
-        void (^okayActionBlock)() = ^ {
-        
-        };
-        
-        [self presentModalMessageWithTitle:@"Latest Location" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
-    }];
-}
-
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -85,7 +85,7 @@ static FlickrAPIManager * sharedManager_;
     [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.search" arguments:[NSDictionary dictionaryWithObjectsAndKeys:[@(latitude) stringValue], @"lat", [@(longitude) stringValue], @"lon", @"1", @"page", [@(limit) stringValue], @"per_page", @"1", @"nojsoncallback", @"2", @"radius", nil]];
 }
 
-+ (void) photosWithID:(NSString*) photoID quality:(FlickrAPIManagerPhotoQuality) quality success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
++ (void) photoWithID:(NSString*) photoID quality:(FlickrAPIManagerPhotoQuality) quality success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
     [FlickrAPIManager sharedManager].apiSuccessBlock = ^(NSDictionary *responseDictionary) {
         NSString * qualityAsString;
         

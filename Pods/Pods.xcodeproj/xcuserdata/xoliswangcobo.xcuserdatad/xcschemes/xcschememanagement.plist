@@ -7,20 +7,36 @@
 		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Pods-picme.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>objectiveflickr.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>17C6CC3B83BD79CF025F24D4ADFE357B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1841BB49567DB52E2873302DC99CFC72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

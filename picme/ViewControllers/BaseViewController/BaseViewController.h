@@ -10,7 +10,6 @@
 
 @interface BaseViewController : UIViewController
 
-- (void) setupNavigationBarTitleViewWithImage:(NSString*) imageName;
 - (void) showLoadingProgressIndicatorWithMessage:(NSString*) loadingMessage;
 - (void) dismissLoadingProgressIndicator;
 - (void) presentModalMessageWithTitle:(NSString*)title message:(NSString*)message buttonTitles:(NSArray*)buttonTitles buttonActions:(NSArray*)buttonActions;

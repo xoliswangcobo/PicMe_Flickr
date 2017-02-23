@@ -10,6 +10,7 @@
 
 @interface BaseViewController ()
     @property (strong, nonatomic) UIScrollView * contentScrollView;
+    @property (strong, nonatomic) UITapGestureRecognizer * endEditingTapGestureRecognizer;
 @end
 
 static UIView * loadingIndicatorView;
@@ -18,7 +19,7 @@ static UIView * loadingIndicatorView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditingOnView)]];
+    self.endEditingTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditingOnView)];
     
     for (UIView * subView in [self.view subviews]) {
         if ([subView isKindOfClass:[UIScrollView class]]) {
@@ -40,26 +41,6 @@ static UIView * loadingIndicatorView;
     [self deregisterFromKeyboardNotifications];
     [self endEditingOnView];
     [super viewWillDisappear:animated];
-}
-
-- (void) setupNavigationBarTitleViewWithImage:(NSString*) imageName {
-    // The image will be centered perfectly.
-    // It will takeup 50% of the navigation bar width
-    // It will takeup 100% of the navigation bar height
-    // It will also replace the titleView
-    
-    CGFloat width = [[UIScreen mainScreen] bounds].size.width*0.5;
-    CGFloat height = self.navigationController.navigationBar.frame.size.height*0.9;
-    
-    // This get the perfect center position on the x-axis
-    CGFloat xPosition = ([[UIScreen mainScreen] bounds].size.width - width)/2.0;
-    CGFloat yPosition = self.navigationController.navigationBar.frame.origin.y;
-    
-    UIImageView * newTitleView = [[UIImageView alloc] initWithFrame:CGRectMake(xPosition, yPosition, width, height)];
-    [newTitleView setContentMode:UIViewContentModeScaleAspectFit];
-    [newTitleView setImage:[UIImage imageNamed:imageName]];
-    
-    [self.navigationItem setTitleView:newTitleView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +79,8 @@ static UIView * loadingIndicatorView;
         CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
         [self.contentScrollView setContentInset:UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)];
     }
+    
+    [self.view addGestureRecognizer:self.endEditingTapGestureRecognizer];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification *)notification {
@@ -105,6 +88,8 @@ static UIView * loadingIndicatorView;
         [self.contentScrollView setContentInset:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
         [self.contentScrollView setContentOffset:CGPointZero animated:YES];
     }
+    
+    [self.view removeGestureRecognizer:self.endEditingTapGestureRecognizer];
 }
 
 - (void) endEditingOnView {

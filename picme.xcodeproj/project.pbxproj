@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05BB7F6D6D5DE4A9584D5CF4 /* Pods_picme.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7753AE39473242DB6EDEA8CA /* Pods_picme.framework */; };
 		854894E91E5E014B00C310A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 854894E81E5E014B00C310A9 /* AppDelegate.m */; };
 		854894F41E5E01BB00C310A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854894F21E5E01BB00C310A9 /* LaunchScreen.storyboard */; };
 		854894F51E5E01BB00C310A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 854894F31E5E01BB00C310A9 /* Main.storyboard */; };
@@ -22,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		719B969EEDF3D6F5573C28C4 /* Pods-picme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picme.debug.xcconfig"; path = "Pods/Target Support Files/Pods-picme/Pods-picme.debug.xcconfig"; sourceTree = "<group>"; };
+		771DC4A782C1A1CBEADC50F9 /* Pods-picme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picme.release.xcconfig"; path = "Pods/Target Support Files/Pods-picme/Pods-picme.release.xcconfig"; sourceTree = "<group>"; };
+		7753AE39473242DB6EDEA8CA /* Pods_picme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_picme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		854894CD1E5DFC1800C310A9 /* picme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = picme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		854894E71E5E014B00C310A9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppDelegate/AppDelegate.h; sourceTree = "<group>"; };
 		854894E81E5E014B00C310A9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppDelegate/AppDelegate.m; sourceTree = "<group>"; };
@@ -49,18 +53,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				854894FF1E5E02A500C310A9 /* CoreLocation.framework in Frameworks */,
+				05BB7F6D6D5DE4A9584D5CF4 /* Pods_picme.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		262EDEEE1A9D571337B60C32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				719B969EEDF3D6F5573C28C4 /* Pods-picme.debug.xcconfig */,
+				771DC4A782C1A1CBEADC50F9 /* Pods-picme.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		854894C41E5DFC1800C310A9 = {
 			isa = PBXGroup;
 			children = (
 				854894CF1E5DFC1800C310A9 /* picme */,
 				854894CE1E5DFC1800C310A9 /* Products */,
 				854894FD1E5E02A500C310A9 /* Frameworks */,
+				262EDEEE1A9D571337B60C32 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				854894FE1E5E02A500C310A9 /* CoreLocation.framework */,
+				7753AE39473242DB6EDEA8CA /* Pods_picme.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,9 +215,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 854894E41E5DFC1800C310A9 /* Build configuration list for PBXNativeTarget "picme" */;
 			buildPhases = (
+				49C6C05DF9A451655B836F7F /* [CP] Check Pods Manifest.lock */,
 				854894C91E5DFC1800C310A9 /* Sources */,
 				854894CA1E5DFC1800C310A9 /* Frameworks */,
 				854894CB1E5DFC1800C310A9 /* Resources */,
+				8706107C27331E38B90063DC /* [CP] Embed Pods Frameworks */,
+				EB2D424643BFBC284D70FD1C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +278,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49C6C05DF9A451655B836F7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8706107C27331E38B90063DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-picme/Pods-picme-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB2D424643BFBC284D70FD1C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-picme/Pods-picme-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		854894C91E5DFC1800C310A9 /* Sources */ = {
@@ -370,6 +437,7 @@
 		};
 		854894E51E5DFC1800C310A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 719B969EEDF3D6F5573C28C4 /* Pods-picme.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6E84VTM6FC;
@@ -383,6 +451,7 @@
 		};
 		854894E61E5DFC1800C310A9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 771DC4A782C1A1CBEADC50F9 /* Pods-picme.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6E84VTM6FC;

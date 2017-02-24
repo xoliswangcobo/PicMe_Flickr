@@ -13,12 +13,19 @@
 
 @interface LocationPhotosViewController () <UITableViewDelegate, UITableViewDataSource>
     @property (weak, nonatomic) IBOutlet UITableView * locationPhotosTableView;
+    @property (strong, nonatomic) NSMutableArray * locationPhotosTableViewPhotos;
 @end
 
 @implementation LocationPhotosViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Init optimisation photos array
+    self.locationPhotosTableViewPhotos = [NSMutableArray array];
+    for (NSInteger index = 0; index < [self.locationPhotos count]; index++) {
+        [self.locationPhotosTableViewPhotos addObject:[NSNull null]];
+    }
 }
 
 
@@ -40,12 +47,17 @@
         NSDictionary * thePhotoData = [self.locationPhotos objectAtIndex:indexPath.row];
         thePhotoCell.photoTitle.text = [thePhotoData valueForKey:@"title"];
         
-        [FlickrAPIManager photoWithID:[thePhotoData valueForKey:@"id"] quality:FlickrAPIManagerPhotoQualityThumbnail success:^(id responseData) {
-            NSLog(@"Data: %@", responseData);
-            thePhotoCell.photoThumbnail.image = [[UIImage alloc] initWithData:responseData];
-        } failure:^(NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
+        if ([self.locationPhotosTableViewPhotos[indexPath.row] isKindOfClass:[UIImage class]] == YES) {
+            thePhotoCell.photoThumbnail.image = self.locationPhotosTableViewPhotos[indexPath.row];
+        } else {
+            [FlickrAPIManager photoWithID:[thePhotoData valueForKey:@"id"] quality:FlickrAPIManagerPhotoQualityThumbnail success:^(id responseData) {
+                NSLog(@"Data: %@", responseData);
+                self.locationPhotosTableViewPhotos[indexPath.row] = [[UIImage alloc] initWithData:responseData];
+                thePhotoCell.photoThumbnail.image = self.locationPhotosTableViewPhotos[indexPath.row];
+            } failure:^(NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
+        }
     }
     
     return thePhotoCell;

@@ -9,6 +9,7 @@
 #import "LocationPhotosViewController.h"
 #import "FlickrAPIManager.h"
 #import "DetailedPhotoViewController.h"
+#import "PlacePhotoTableViewCell.h"
 
 @interface LocationPhotosViewController () <UITableViewDelegate, UITableViewDataSource>
     @property (weak, nonatomic) IBOutlet UITableView * locationPhotosTableView;
@@ -32,12 +33,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * thePhotoCell;
+    PlacePhotoTableViewCell * thePhotoCell;
     thePhotoCell = [tableView dequeueReusableCellWithIdentifier:@"locationPhotoCell"];
     
     if (thePhotoCell) {
         NSDictionary * thePhotoData = [self.locationPhotos objectAtIndex:indexPath.row];
-        thePhotoCell.textLabel.text = [thePhotoData valueForKey:@"title"];
+        thePhotoCell.photoTitle.text = [thePhotoData valueForKey:@"title"];
+        
+        [FlickrAPIManager photoWithID:[thePhotoData valueForKey:@"id"] quality:FlickrAPIManagerPhotoQualityThumbnail success:^(id responseData) {
+            NSLog(@"Data: %@", responseData);
+            thePhotoCell.photoThumbnail.image = [[UIImage alloc] initWithData:responseData];
+        } failure:^(NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
     }
     
     return thePhotoCell;

@@ -22,6 +22,7 @@
 		857D4ECA1E5EF9C400D9F6B1 /* FlickrAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4EC91E5EF9C400D9F6B1 /* FlickrAPIManager.m */; };
 		857D4ED11E5F776F00D9F6B1 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED01E5F776F00D9F6B1 /* Utilities.m */; };
 		857D4ED61E601A9D00D9F6B1 /* PlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED51E601A9D00D9F6B1 /* PlaceTableViewCell.m */; };
+		857D4ED91E602BED00D9F6B1 /* PlacePhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED81E602BED00D9F6B1 /* PlacePhotoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		857D4ED01E5F776F00D9F6B1 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = Models/Utilities.m; sourceTree = "<group>"; };
 		857D4ED41E601A9D00D9F6B1 /* PlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceTableViewCell.h; path = ViewComponents/TableCells/PlaceTableViewCell.h; sourceTree = "<group>"; };
 		857D4ED51E601A9D00D9F6B1 /* PlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceTableViewCell.m; path = ViewComponents/TableCells/PlaceTableViewCell.m; sourceTree = "<group>"; };
+		857D4ED71E602BED00D9F6B1 /* PlacePhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacePhotoTableViewCell.h; path = ViewComponents/TableCells/PlacePhotoTableViewCell.h; sourceTree = "<group>"; };
+		857D4ED81E602BED00D9F6B1 /* PlacePhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacePhotoTableViewCell.m; path = ViewComponents/TableCells/PlacePhotoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,8 @@
 			children = (
 				857D4ED41E601A9D00D9F6B1 /* PlaceTableViewCell.h */,
 				857D4ED51E601A9D00D9F6B1 /* PlaceTableViewCell.m */,
+				857D4ED71E602BED00D9F6B1 /* PlacePhotoTableViewCell.h */,
+				857D4ED81E602BED00D9F6B1 /* PlacePhotoTableViewCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				854894E91E5E014B00C310A9 /* AppDelegate.m in Sources */,
+				857D4ED91E602BED00D9F6B1 /* PlacePhotoTableViewCell.m in Sources */,
 				854895171E5E293B00C310A9 /* LocationPhotosViewController.m in Sources */,
 				8548950C1E5E1DB000C310A9 /* LocationManager.m in Sources */,
 				857D4ED11E5F776F00D9F6B1 /* Utilities.m in Sources */,

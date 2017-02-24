@@ -152,26 +152,43 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-On-yhr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uJG-On-yhr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationPhotoCell" textLabel="ngK-M3-GSx" style="IBUITableViewCellStyleDefault" id="Ljn-VJ-NrJ">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationPhotoCell" id="Ljn-VJ-NrJ" customClass="PlacePhotoTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ljn-VJ-NrJ" id="WWE-in-L7m">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ngK-M3-GSx">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="sSH-dF-CbI">
+                                                    <rect key="frame" x="8" y="3" width="53.5" height="53.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="sSH-dF-CbI" secondAttribute="height" multiplier="1:1" id="Vvw-cx-bgg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-Lr-wpf">
+                                                    <rect key="frame" x="81.5" y="19.5" width="285.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LLZ-Lr-wpf" firstAttribute="centerY" secondItem="sSH-dF-CbI" secondAttribute="centerY" id="GvX-2I-HJc"/>
+                                                <constraint firstItem="sSH-dF-CbI" firstAttribute="centerY" secondItem="WWE-in-L7m" secondAttribute="centerY" id="NUa-eF-HBO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LLZ-Lr-wpf" secondAttribute="trailing" id="OQE-xf-1wr"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="sSH-dF-CbI" secondAttribute="leading" id="bOq-CP-QM7"/>
+                                                <constraint firstItem="LLZ-Lr-wpf" firstAttribute="leading" secondItem="sSH-dF-CbI" secondAttribute="trailing" constant="20" id="nFg-lj-M8s"/>
+                                                <constraint firstItem="sSH-dF-CbI" firstAttribute="height" secondItem="WWE-in-L7m" secondAttribute="height" multiplier="0.9" id="xgP-A2-11f"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="photoThumbnail" destination="sSH-dF-CbI" id="l17-Ep-60I"/>
+                                            <outlet property="photoTitle" destination="LLZ-Lr-wpf" id="1C0-4J-RcW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -111,10 +111,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5RG-cS-fR2">
-                                <rect key="frame" x="37" y="93.5" width="300" height="533.5"/>
+                                <rect key="frame" x="37" y="75" width="300" height="552"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMb-bK-I8Q">
-                                <rect key="frame" x="16" y="58.5" width="343" height="20"/>
+                                <rect key="frame" x="16" y="40" width="343" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -124,7 +124,7 @@
                         <constraints>
                             <constraint firstItem="MMb-bK-I8Q" firstAttribute="leading" secondItem="Qhk-gv-LqJ" secondAttribute="leadingMargin" id="2ia-p1-Mpb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MMb-bK-I8Q" secondAttribute="trailing" id="8x4-B9-YaB"/>
-                            <constraint firstItem="5RG-cS-fR2" firstAttribute="height" secondItem="Qhk-gv-LqJ" secondAttribute="height" multiplier="0.8" id="JpW-0y-EXb"/>
+                            <constraint firstItem="MMb-bK-I8Q" firstAttribute="top" secondItem="nFP-GU-ojp" secondAttribute="bottom" constant="20" id="Pn2-pE-WQi"/>
                             <constraint firstItem="CG7-ny-9Nu" firstAttribute="top" secondItem="5RG-cS-fR2" secondAttribute="bottom" constant="40" id="Xah-v0-mQ4"/>
                             <constraint firstItem="5RG-cS-fR2" firstAttribute="top" secondItem="MMb-bK-I8Q" secondAttribute="bottom" constant="15" id="Xw1-1J-dh9"/>
                             <constraint firstItem="5RG-cS-fR2" firstAttribute="centerX" secondItem="Qhk-gv-LqJ" secondAttribute="centerX" id="jzo-gf-IvW"/>

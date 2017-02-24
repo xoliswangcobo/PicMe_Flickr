@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -66,6 +68,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="888.79999999999995" y="-646.32683658170924"/>
+        </scene>
+        <!--Detailed Photo View Controller-->
+        <scene sceneID="oxX-rq-E2s">
+            <objects>
+                <viewController storyboardIdentifier="DetailedPhotoViewController" id="CE6-eL-Rsj" customClass="DetailedPhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nFP-GU-ojp"/>
+                        <viewControllerLayoutGuide type="bottom" id="CG7-ny-9Nu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qhk-gv-LqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5RG-cS-fR2">
+                                <rect key="frame" x="37" y="93.5" width="300" height="533.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMb-bK-I8Q">
+                                <rect key="frame" x="16" y="58.5" width="343" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MMb-bK-I8Q" firstAttribute="leading" secondItem="Qhk-gv-LqJ" secondAttribute="leadingMargin" id="2ia-p1-Mpb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MMb-bK-I8Q" secondAttribute="trailing" id="8x4-B9-YaB"/>
+                            <constraint firstItem="5RG-cS-fR2" firstAttribute="height" secondItem="Qhk-gv-LqJ" secondAttribute="height" multiplier="0.8" id="JpW-0y-EXb"/>
+                            <constraint firstItem="CG7-ny-9Nu" firstAttribute="top" secondItem="5RG-cS-fR2" secondAttribute="bottom" constant="40" id="Xah-v0-mQ4"/>
+                            <constraint firstItem="5RG-cS-fR2" firstAttribute="top" secondItem="MMb-bK-I8Q" secondAttribute="bottom" constant="15" id="Xw1-1J-dh9"/>
+                            <constraint firstItem="5RG-cS-fR2" firstAttribute="centerX" secondItem="Qhk-gv-LqJ" secondAttribute="centerX" id="jzo-gf-IvW"/>
+                            <constraint firstItem="5RG-cS-fR2" firstAttribute="width" secondItem="Qhk-gv-LqJ" secondAttribute="width" multiplier="0.8" id="uxq-se-u7P"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photo" destination="5RG-cS-fR2" id="Uc5-mx-UZq"/>
+                        <outlet property="photoTitle" destination="MMb-bK-I8Q" id="CFj-os-VL5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2nh-6j-63h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889" y="126"/>
         </scene>
         <!--Photos Group-->
         <scene sceneID="pK4-g1-rhX">

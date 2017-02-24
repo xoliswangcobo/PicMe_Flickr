@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface DetailedPhotoViewController : BaseViewController
-
+    @property (strong, nonatomic) NSData * photoImageData;
+    @property (strong, nonatomic) NSDictionary * photoOtherData;
 @end

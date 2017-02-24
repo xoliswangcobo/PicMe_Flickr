@@ -51,11 +51,9 @@
             thePhotoCell.photoThumbnail.image = self.locationPhotosTableViewPhotos[indexPath.row];
         } else {
             [FlickrAPIManager photoWithID:[thePhotoData valueForKey:@"id"] quality:FlickrAPIManagerPhotoQualityThumbnail success:^(id responseData) {
-                NSLog(@"Data: %@", responseData);
                 self.locationPhotosTableViewPhotos[indexPath.row] = [[UIImage alloc] initWithData:responseData];
                 thePhotoCell.photoThumbnail.image = self.locationPhotosTableViewPhotos[indexPath.row];
             } failure:^(NSError *error) {
-                NSLog(@"Error: %@", error);
             }];
         }
     }

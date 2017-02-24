@@ -87,56 +87,6 @@ static FlickrAPIManager * sharedManager_;
 }
 
 + (void) photoWithID:(NSString*) photoID quality:(FlickrAPIManagerPhotoQuality) quality success:(void (^) (id responseData)) success failure:(void (^) (NSError * error)) failure {
-//    [FlickrAPIManager sharedManager].apiSuccessBlock = ^(NSDictionary *responseDictionary) {
-//        NSString * qualityAsString;
-//        
-//        switch (quality) {
-//            case FlickrAPIManagerPhotoQualityThumbnail:
-//                qualityAsString = @"Thumbnail";
-//                break;
-//            case FlickrAPIManagerPhotoQualitySmall:
-//                qualityAsString = @"Small 320";
-//                break;
-//            case FlickrAPIManagerPhotoQualityMedium:
-//                qualityAsString = @"Medium 640";
-//                break;
-//            case FlickrAPIManagerPhotoQualityLarge:
-//                qualityAsString = @"Large";
-//                break;
-//            case FlickrAPIManagerPhotoQualityOriginal:
-//                qualityAsString = @"Original";
-//                break;
-//            default:
-//                break;
-//        }
-//        
-//        NSString * photoURLString;
-//        
-//        for (NSDictionary * photoSize in [[responseDictionary objectForKey:@"sizes"] objectForKey:@"size"]) {
-//            if ([[photoSize valueForKey:@"label"] isEqualToString:qualityAsString]) {
-//                photoURLString = [photoSize valueForKey:@"source"];
-//                break;
-//            }
-//        }
-//        
-//        [Utilities downloadDataWithURL:photoURLString success:^(id responseData) {
-//            if (success) {
-//                success(responseData);
-//            }
-//        } failure:^(NSError *error) {
-//            if (failure) {
-//                failure(error);
-//            }
-//        }];
-//    };
-//    
-//    [FlickrAPIManager sharedManager].apiFailureBlock = ^(NSError *error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    };
-//    
-//    [[FlickrAPIManager sharedManager].request callAPIMethodWithGET:@"flickr.photos.getSizes" arguments:@{ @"nojsoncallback" : @"1", @"photo_id" : photoID }];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:API_URL parameters:@{ @"method" : @"flickr.photos.getSizes", @"api_key" : API_KEY, @"nojsoncallback" : @"1", @"photo_id" : photoID, @"format" : @"json" } progress:nil success:^(NSURLSessionTask *task, id responseObject) {

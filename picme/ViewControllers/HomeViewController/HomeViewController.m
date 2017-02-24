@@ -8,6 +8,8 @@
 
 #import "HomeViewController.h"
 #import "LocationPhotosViewController.h"
+#import "PlaceTableViewCell.h"
+#import "Utilities.h"
 
 @interface HomeViewController() <UITableViewDataSource, UITableViewDelegate>
     @property (strong, nonatomic) NSArray * nearByPlaces;
@@ -69,12 +71,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * theCell;
+    PlaceTableViewCell * theCell;
     theCell = [tableView dequeueReusableCellWithIdentifier:@"placeCell"];
     
     if (theCell) {
         NSDictionary * placeData = [self.nearByPlaces objectAtIndex:indexPath.row];
-        theCell.textLabel.text = [placeData valueForKey:@"name"];
+        theCell.placeName.text = [placeData valueForKey:@"name"];
+        theCell.placeVacinity.text = [placeData valueForKey:@"vicinity"];
+        
+        [Utilities downloadDataWithURL:[placeData valueForKey:@"icon"] success:^(id responseData) {
+            theCell.placeIcon.image = [[UIImage alloc] initWithData:responseData];
+        } failure:^(NSError *error) {
+            
+        }];
     }
     
     return theCell;

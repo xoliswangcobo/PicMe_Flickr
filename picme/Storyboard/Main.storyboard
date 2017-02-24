@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,26 +25,53 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aQo-wp-yIi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aQo-wp-yIi">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" textLabel="R1j-Sb-Dhy" style="IBUITableViewCellStyleDefault" id="RwL-Il-O2p">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" id="RwL-Il-O2p" customClass="PlaceTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RwL-Il-O2p" id="IHr-Wl-mAq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R1j-Sb-Dhy">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="yna-RR-BjH">
+                                                    <rect key="frame" x="14" y="6" width="67.5" height="67.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="yna-RR-BjH" secondAttribute="height" multiplier="1:1" id="LOj-4s-LS9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2J-Br-ulr" userLabel="Name">
+                                                    <rect key="frame" x="91.5" y="14" width="275.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vacinity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwj-rL-4nd" userLabel="Vacinity">
+                                                    <rect key="frame" x="91.5" y="45" width="275.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f2J-Br-ulr" firstAttribute="leading" secondItem="yna-RR-BjH" secondAttribute="trailing" constant="10" id="D0M-kV-aMa"/>
+                                                <constraint firstItem="Xwj-rL-4nd" firstAttribute="trailing" secondItem="f2J-Br-ulr" secondAttribute="trailing" id="FEp-Id-QmD"/>
+                                                <constraint firstItem="yna-RR-BjH" firstAttribute="leading" secondItem="IHr-Wl-mAq" secondAttribute="leadingMargin" constant="6" id="OGq-Fn-GRk"/>
+                                                <constraint firstItem="yna-RR-BjH" firstAttribute="centerY" secondItem="IHr-Wl-mAq" secondAttribute="centerY" id="PBZ-uQ-TVd"/>
+                                                <constraint firstItem="Xwj-rL-4nd" firstAttribute="leading" secondItem="f2J-Br-ulr" secondAttribute="leading" id="TYe-63-q32"/>
+                                                <constraint firstItem="f2J-Br-ulr" firstAttribute="top" secondItem="yna-RR-BjH" secondAttribute="topMargin" id="cU6-d7-sdX"/>
+                                                <constraint firstItem="Xwj-rL-4nd" firstAttribute="bottom" secondItem="yna-RR-BjH" secondAttribute="bottomMargin" id="iyk-tj-Sty"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="f2J-Br-ulr" secondAttribute="trailing" id="knh-aV-CnO"/>
+                                                <constraint firstItem="yna-RR-BjH" firstAttribute="height" secondItem="IHr-Wl-mAq" secondAttribute="height" multiplier="0.85" id="mC4-Xa-Zvl"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="placeIcon" destination="yna-RR-BjH" id="QTe-OU-qFD"/>
+                                            <outlet property="placeName" destination="f2J-Br-ulr" id="HK0-Zl-cbq"/>
+                                            <outlet property="placeVacinity" destination="Xwj-rL-4nd" id="Nuo-sX-5uf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -183,4 +212,7 @@
             <point key="canvasLocation" x="24.800000000000001" y="-646.32683658170924"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gallery" width="100" height="100"/>
+    </resources>
 </document>

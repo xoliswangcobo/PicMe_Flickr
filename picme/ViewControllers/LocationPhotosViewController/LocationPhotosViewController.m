@@ -7,6 +7,8 @@
 //
 
 #import "LocationPhotosViewController.h"
+#import "FlickrAPIManager.h"
+#import "DetailedPhotoViewController.h"
 
 @interface LocationPhotosViewController () <UITableViewDelegate, UITableViewDataSource>
     @property (weak, nonatomic) IBOutlet UITableView * locationPhotosTableView;
@@ -39,6 +41,24 @@
     }
     
     return thePhotoCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary * selectedPhotoData = [self.locationPhotos objectAtIndex:indexPath.row];
+    
+    [self showLoadingProgressIndicatorWithMessage:@"Downloading..."];
+    
+    [FlickrAPIManager photoWithID:[selectedPhotoData valueForKey:@"id"] quality:FlickrAPIManagerPhotoQualityLarge success:^(id responseData) {
+        [self dismissLoadingProgressIndicator];
+        DetailedPhotoViewController * detailedPhotoViewController = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"DetailedPhotoViewController"];
+        detailedPhotoViewController.photoOtherData = selectedPhotoData;
+        detailedPhotoViewController.photoImageData = responseData;
+        [self.navigationController pushViewController:detailedPhotoViewController animated:YES];
+    } failure:^(NSError *error) {
+        [self dismissLoadingProgressIndicator];
+        void (^okayActionBlock)() = ^ {};
+        [self presentModalMessageWithTitle:@"Download" message:error.localizedDescription buttonTitles:@[@"Okay"] buttonActions:@[[okayActionBlock copy]]];
+    }];
 }
 
 #pragma mark - Navigation

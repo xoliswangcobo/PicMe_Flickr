@@ -10,6 +10,7 @@
 #import "FlickrAPIManager.h"
 #import "DetailedPhotoViewController.h"
 #import "PlacePhotoTableViewCell.h"
+#import "LocationPhotosMapViewController.h"
 
 @interface LocationPhotosViewController () <UITableViewDelegate, UITableViewDataSource>
     @property (weak, nonatomic) IBOutlet UITableView * locationPhotosTableView;
@@ -26,6 +27,11 @@
     for (NSInteger index = 0; index < [self.locationPhotos count]; index++) {
         [self.locationPhotosTableViewPhotos addObject:[NSNull null]];
     }
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Map"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(presentPhotosOnMap)];
 }
 
 
@@ -80,6 +86,14 @@
 }
 
 #pragma mark - Navigation
+
+- (void) presentPhotosOnMap {
+    LocationPhotosMapViewController * locationPhotosMapViewController = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"LocationPhotosMapViewController"];
+    locationPhotosMapViewController.locationPhotos = self.locationPhotos;
+    locationPhotosMapViewController.locationPhotosCache = self.locationPhotosTableViewPhotos;
+    [self.navigationController pushViewController:locationPhotosMapViewController animated:YES];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 

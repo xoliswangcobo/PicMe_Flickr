@@ -10,3 +10,5 @@ Downloads thumbnails to show photo preview and then downloads the large photo on
 Not optimised at the moment, redownloads the already previously selected photo to show full view.
 
 Only thirty (30) photos per location.
+
+Now able to show the photos for a selected location on the map. Selecting a photo also shows the full photo view.

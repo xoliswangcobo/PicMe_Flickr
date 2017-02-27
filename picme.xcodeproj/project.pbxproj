@@ -23,6 +23,7 @@
 		857D4ED11E5F776F00D9F6B1 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED01E5F776F00D9F6B1 /* Utilities.m */; };
 		857D4ED61E601A9D00D9F6B1 /* PlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED51E601A9D00D9F6B1 /* PlaceTableViewCell.m */; };
 		857D4ED91E602BED00D9F6B1 /* PlacePhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 857D4ED81E602BED00D9F6B1 /* PlacePhotoTableViewCell.m */; };
+		8599F1991E64081900297E24 /* LocationPhotosMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8599F1981E64081900297E24 /* LocationPhotosMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		857D4ED51E601A9D00D9F6B1 /* PlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceTableViewCell.m; path = ViewComponents/TableCells/PlaceTableViewCell.m; sourceTree = "<group>"; };
 		857D4ED71E602BED00D9F6B1 /* PlacePhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlacePhotoTableViewCell.h; path = ViewComponents/TableCells/PlacePhotoTableViewCell.h; sourceTree = "<group>"; };
 		857D4ED81E602BED00D9F6B1 /* PlacePhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlacePhotoTableViewCell.m; path = ViewComponents/TableCells/PlacePhotoTableViewCell.m; sourceTree = "<group>"; };
+		8599F1971E64081900297E24 /* LocationPhotosMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationPhotosMapViewController.h; path = ViewControllers/LocationPhotosMapViewController/LocationPhotosMapViewController.h; sourceTree = "<group>"; };
+		8599F1981E64081900297E24 /* LocationPhotosMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPhotosMapViewController.m; path = ViewControllers/LocationPhotosMapViewController/LocationPhotosMapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,7 @@
 			children = (
 				8548950E1E5E280900C310A9 /* DetailedPhotoViewController */,
 				8548950D1E5E27EB00C310A9 /* LocationPhotosViewController */,
+				8599F1961E6407B700297E24 /* LocationPhotosMapViewController */,
 				854895041E5E042A00C310A9 /* HomeViewController */,
 				854895001E5E034B00C310A9 /* BaseViewController */,
 			);
@@ -241,6 +245,15 @@
 				857D4ED81E602BED00D9F6B1 /* PlacePhotoTableViewCell.m */,
 			);
 			name = TableCells;
+			sourceTree = "<group>";
+		};
+		8599F1961E6407B700297E24 /* LocationPhotosMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8599F1971E64081900297E24 /* LocationPhotosMapViewController.h */,
+				8599F1981E64081900297E24 /* LocationPhotosMapViewController.m */,
+			);
+			name = LocationPhotosMapViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +388,7 @@
 				854895111E5E286E00C310A9 /* HomeViewController.m in Sources */,
 				857D4ECA1E5EF9C400D9F6B1 /* FlickrAPIManager.m in Sources */,
 				857D4ED61E601A9D00D9F6B1 /* PlaceTableViewCell.m in Sources */,
+				8599F1991E64081900297E24 /* LocationPhotosMapViewController.m in Sources */,
 				854894FC1E5E01F700C310A9 /* main.m in Sources */,
 				854895141E5E291D00C310A9 /* DetailedPhotoViewController.m in Sources */,
 			);

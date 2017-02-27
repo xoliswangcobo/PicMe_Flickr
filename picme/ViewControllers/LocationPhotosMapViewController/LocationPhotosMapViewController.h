@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface LocationPhotosMapViewController : BaseViewController
-
+    @property (strong, nonatomic) NSArray * locationPhotos;
+    @property (strong, nonatomic) NSMutableArray * locationPhotosCache;
 @end

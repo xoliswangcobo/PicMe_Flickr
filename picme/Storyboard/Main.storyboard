@@ -33,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RwL-Il-O2p" id="IHr-Wl-mAq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="yna-RR-BjH">
@@ -140,6 +140,38 @@
             </objects>
             <point key="canvasLocation" x="889" y="126"/>
         </scene>
+        <!--Location Photos Map View Controller-->
+        <scene sceneID="zSn-2R-0zr">
+            <objects>
+                <viewController storyboardIdentifier="LocationPhotosMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jP8-EY-JqM" customClass="LocationPhotosMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hFj-Ys-Rod"/>
+                        <viewControllerLayoutGuide type="bottom" id="hMI-BE-iQK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UaE-hL-heQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a21-jK-ODT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="a21-jK-ODT" secondAttribute="trailing" id="4tD-9x-s9a"/>
+                            <constraint firstItem="a21-jK-ODT" firstAttribute="top" secondItem="hFj-Ys-Rod" secondAttribute="bottom" id="7Eq-jC-Ynp"/>
+                            <constraint firstItem="a21-jK-ODT" firstAttribute="leading" secondItem="UaE-hL-heQ" secondAttribute="leading" id="URn-qk-qgw"/>
+                            <constraint firstItem="hMI-BE-iQK" firstAttribute="top" secondItem="a21-jK-ODT" secondAttribute="bottom" id="Xo1-lG-9MM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="locationPhotosMapView" destination="a21-jK-ODT" id="1Zl-J1-1Fu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLB-nv-lVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832.8" y="125.4872563718141"/>
+        </scene>
         <!--Photos Group-->
         <scene sceneID="pK4-g1-rhX">
             <objects>
@@ -160,7 +192,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ljn-VJ-NrJ" id="WWE-in-L7m">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="sSH-dF-CbI">

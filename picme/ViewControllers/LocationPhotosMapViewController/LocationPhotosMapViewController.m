@@ -68,9 +68,7 @@
         LocationPhotoPointAnnotation * locationPhotoAnnotation = (LocationPhotoPointAnnotation*) annotation;
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:locationPhotoAnnotation reuseIdentifier:@"locationPhoto"];
         
-        NSInteger indexForAnnotation = [self.photoMapAnnotations indexOfObject:annotation];
-        
-        UIImage * annotationPhoto = [self.locationPhotosCache objectAtIndex:indexForAnnotation];
+        UIImage * annotationPhoto = [locationPhotoAnnotation.photoData objectForKey:@"photo_image"];
         
         if ([annotationPhoto isKindOfClass:[UIImage class]]) {
             annotationView.image = annotationPhoto;
@@ -80,8 +78,13 @@
             annotationView.layer.cornerRadius = 5.0;
             
             [FlickrAPIManager photoWithID:[locationPhotoAnnotation.photoData valueForKey:@"id"] quality:FlickrAPIManagerPhotoQualityThumbnail success:^(id responseData) {
-                self.locationPhotosCache[indexForAnnotation] = [[UIImage alloc] initWithData:responseData];
-                annotationView.image = self.locationPhotosCache[indexForAnnotation];
+                UIImage * theImagePhoto = [[UIImage alloc] initWithData:responseData];
+                NSInteger indexForAnnotation = [self.photoMapAnnotations indexOfObject:locationPhotoAnnotation];
+                NSMutableDictionary * thePhotoData = [locationPhotoAnnotation.photoData mutableCopy];
+                [thePhotoData setObject:theImagePhoto forKey:@"photo_image"];
+                annotationView.image = theImagePhoto;
+                locationPhotoAnnotation.photoData = thePhotoData;
+                self.photoMapAnnotations[indexForAnnotation] = locationPhotoAnnotation;
             } failure:^(NSError *error) {
             }];
         }

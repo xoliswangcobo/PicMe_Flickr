@@ -89,8 +89,16 @@
 
 - (void) presentPhotosOnMap {
     LocationPhotosMapViewController * locationPhotosMapViewController = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"LocationPhotosMapViewController"];
-    locationPhotosMapViewController.locationPhotos = self.locationPhotos;
-    locationPhotosMapViewController.locationPhotosCache = self.locationPhotosTableViewPhotos;
+    
+    NSMutableArray * mapViewLocationPhotos = [NSMutableArray array];
+    
+    for (NSInteger index = 0; index < [self.locationPhotos count]; index++) {
+        NSMutableDictionary * photoData = [self.locationPhotos objectAtIndex:index];
+        [photoData setObject:self.locationPhotosTableViewPhotos[index] forKey:@"photo_image"];
+        [mapViewLocationPhotos addObject:photoData];
+    }
+    
+    locationPhotosMapViewController.locationPhotos = mapViewLocationPhotos;
     [self.navigationController pushViewController:locationPhotosMapViewController animated:YES];
 }
 

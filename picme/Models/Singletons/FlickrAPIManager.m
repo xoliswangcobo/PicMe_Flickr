@@ -11,8 +11,8 @@
 #import "AFNetworking.h"
 #import "Utilities.h"
 
-#define API_KEY @"450b251beda219be0de47e38e5511ea0"
-#define APP_SECRET @"d55986dfa5325bbc"
+#define API_KEY @""
+#define APP_SECRET @""
 #define API_URL @"https://api.flickr.com/services/rest/"
 
 #pragma mark - FlickrAPIManager
